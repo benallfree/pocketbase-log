@@ -4,5 +4,15 @@
   "files": [
     "index.js"
   ],
-  "version": "0.0.1-0"
+  "version": "0.0.1",
+  "dependencies": {
+    "pocketbase-stringify": "link:pocketbase-stringify"
+  },
+  "devDependencies": {
+    "microbundle": "^0.15.1"
+  },
+  "scripts": {
+    "build": "microbundle src/index.ts -f=cjs",
+    "watch": "microbundle --watch src/index.ts -f=cjs"
+  }
 }

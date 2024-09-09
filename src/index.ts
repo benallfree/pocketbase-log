@@ -1,4 +1,8 @@
-const replacer = (k, v) => {
+/// <reference path="../jsvm.d.ts" />
+
+import { stringify } from 'pocketbase-stringify'
+
+const replacer = (k: string, v: any) => {
   if (v instanceof Error) {
     return v.stack
   }
@@ -11,9 +15,7 @@ const replacer = (k, v) => {
   return v
 }
 
-const { stringify } = require('pocketbase-stringify')
-
-const prepare = (objs) => {
+const prepare = (objs: any[]) => {
   const parts = objs.map((o) => {
     if (o instanceof Error) {
       return o.stack
@@ -32,22 +34,22 @@ const prepare = (objs) => {
   return parts.join(` `)
 }
 
-const dbg = (...objs) => {
+const dbg = (...objs: any[]) => {
   const s = prepare(objs)
   $app.logger().debug(s)
 }
 
-const info = (...objs) => {
+const info = (...objs: any[]) => {
   const s = prepare(objs)
   $app.logger().info(s)
 }
 
-const warn = (...objs) => {
+const warn = (...objs: any[]) => {
   const s = prepare(objs)
   $app.logger().warn(s)
 }
 
-const error = (...objs) => {
+const error = (...objs: any[]) => {
   const s = prepare(objs)
   $app.logger().error(s)
 }
