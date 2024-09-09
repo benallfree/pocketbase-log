@@ -1,18 +1,20 @@
 {
   "name": "pocketbase-log",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
-    "index.js"
+    "dist"
   ],
   "version": "0.0.1",
   "dependencies": {
     "pocketbase-stringify": "link:pocketbase-stringify"
   },
   "devDependencies": {
+    "esbuild": "^0.23.1",
     "microbundle": "^0.15.1"
   },
   "scripts": {
-    "build": "microbundle src/index.ts -f=cjs",
-    "watch": "microbundle --watch src/index.ts -f=cjs"
+    "build": "esbuild src/index.ts --format=cjs --sourcemap --bundle --outfile=dist/index.js",
+    "watch": "microbundle --watch src/index.ts -f=cjs  --external=none"
   }
 }
