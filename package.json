@@ -2,9 +2,7 @@
   "name": "pocketbase-log",
   "main": "index.js",
   "files": [
-    "index.js",
-    "README.txt",
-    "LICENSE"
+    "index.js"
   ],
   "version": "0.0.1-0"
 }

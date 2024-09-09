@@ -1,5 +1,3 @@
-const stringify = require('pocketbase-stringify')
-
 const replacer = (k, v) => {
   if (v instanceof Error) {
     return v.stack
@@ -13,7 +11,9 @@ const replacer = (k, v) => {
   return v
 }
 
-const _build = (...objs) => {
+const { stringify } = require('pocketbase-stringify')
+
+const prepare = (objs) => {
   const parts = objs.map((o) => {
     if (o instanceof Error) {
       return o.stack
@@ -32,9 +32,24 @@ const _build = (...objs) => {
   return parts.join(` `)
 }
 
-const dbg = (...objs) => $app.logger().debug(_build(...objs))
-const error = (...objs) => $app.logger().error(_build(...objs))
-const info = (...objs) => $app.logger().info(_build(...objs))
-const warn = (...objs) => $app.logger().warn(_build(...objs))
+const dbg = (...objs) => {
+  const s = prepare(objs)
+  $app.logger().debug(s)
+}
 
-module.exports = { dbg, error, info, warn, debug: dbg }
+const info = (...objs) => {
+  const s = prepare(objs)
+  $app.logger().info(s)
+}
+
+const warn = (...objs) => {
+  const s = prepare(objs)
+  $app.logger().warn(s)
+}
+
+const error = (...objs) => {
+  const s = prepare(objs)
+  $app.logger().error(s)
+}
+
+module.exports = { dbg, info, warn, error, stringify }
