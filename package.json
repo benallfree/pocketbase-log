@@ -1,7 +1,6 @@
 {
   "name": "pocketbase-log",
   "main": "dist/index.js",
-  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
@@ -15,6 +14,6 @@
   },
   "scripts": {
     "build": "esbuild src/index.ts --format=cjs --sourcemap --bundle --outfile=dist/index.js",
-    "watch": "microbundle --watch src/index.ts -f=cjs  --external=none"
+    "watch": "bun run build --watch"
   }
 }
