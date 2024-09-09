@@ -13,7 +13,7 @@ const replacer = (k, v) => {
   return v
 }
 
-const dbg = (...objs) => {
+const _build = (...objs) => {
   const parts = objs.map((o) => {
     if (o instanceof Error) {
       return o.stack
@@ -29,7 +29,12 @@ const dbg = (...objs) => {
     }
     return o
   })
-  $app.logger().debug(parts.join(` `))
+  return parts.join(` `)
 }
 
-module.exports = { dbg }
+const dbg = (...objs) => $app.logger().debug(_build(...objs))
+const error = (...objs) => $app.logger().error(_build(...objs))
+const info = (...objs) => $app.logger().info(_build(...objs))
+const warn = (...objs) => $app.logger().warn(_build(...objs))
+
+module.exports = { dbg, error, info, warn, debug: dbg }
