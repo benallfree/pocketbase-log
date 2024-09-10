@@ -54,4 +54,4 @@ const error = (...objs: any[]) => {
   $app.logger().error(s)
 }
 
-module.exports = { dbg, info, warn, error, stringify }
+export { dbg, info, warn, error }
