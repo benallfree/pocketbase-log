@@ -1,10 +1,8 @@
-/// <reference path="../jsvm.d.ts" />
-
 import { stringify } from 'pocketbase-stringify'
 
 const replacer = (k: string, v: any) => {
   if (v instanceof Error) {
-    return v.stack
+    return `${v}\n${v.stack}`
   }
   if (v instanceof RegExp) {
     return v.toString()
@@ -54,4 +52,9 @@ const error = (...objs: any[]) => {
   $app.logger().error(s)
 }
 
-export { dbg, info, warn, error }
+const log = (...objs: any[]) => {
+  const s = prepare(objs)
+  console.log(s)
+}
+
+export { dbg, info, warn, error, log }

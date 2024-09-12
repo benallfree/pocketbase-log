@@ -1,0 +1,6 @@
+{
+  "compilerOptions": {
+    "types": ["pocketbase-jsvm"],
+    "moduleResolution": "node"
+  }
+}
