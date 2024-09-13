@@ -1,18 +1,5 @@
 import { stringify } from 'pocketbase-stringify'
 
-const replacer = (k: string, v: any) => {
-  if (v instanceof Error) {
-    return `${v}\n${v.stack}`
-  }
-  if (v instanceof RegExp) {
-    return v.toString()
-  }
-  if (v instanceof Function) {
-    return v.toString()
-  }
-  return v
-}
-
 const prepare = (objs: any[]) => {
   const parts = objs.map((o) => {
     if (o instanceof Error) {
@@ -25,7 +12,7 @@ const prepare = (objs: any[]) => {
       return o.toString()
     }
     if (typeof o === 'object') {
-      return stringify(o, replacer, 2)
+      return stringify(o, null, 2)
     }
     return o
   })

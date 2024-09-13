@@ -1,7 +1,21 @@
 {
   "name": "pocketbase-log",
+  "version": "0.0.2",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "author": {
+    "name": "Ben Allfree",
+    "github": "benallfree"
+  },
+  "homepage": "https://github.com/benallfree/pocketbase-log",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/benallfree/pocketbase-log"
+  },
+  "bugs": {
+    "url": "https://github.com/benallfree/pocketbase-log/issues"
+  },
   "scripts": {
     "build": "rimraf dist && tsup src/index.ts --dts --format cjs --out-dir dist",
     "watch": "bun run build --watch"
@@ -9,9 +23,8 @@
   "files": [
     "dist"
   ],
-  "version": "0.0.1",
   "dependencies": {
-    "pocketbase-stringify": "link:pocketbase-stringify"
+    "pocketbase-stringify": "^0.0.2"
   },
   "devDependencies": {
     "pocketbase-jsvm": "link:pocketbase-jsvm",
