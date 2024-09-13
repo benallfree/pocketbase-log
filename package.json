@@ -27,7 +27,7 @@
     "pocketbase-stringify": "^0.0.2"
   },
   "devDependencies": {
-    "pocketbase-jsvm": "link:pocketbase-jsvm",
+    "pocketbase-jsvm": "^0.22.20-rev.1",
     "tsup": "^8.2.4",
     "typescript": "^5.6.2"
   }
